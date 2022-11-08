@@ -318,15 +318,16 @@
 - (void)createPlaylistWithName:(NSString *)playlistName tracks:(NSArray *)tracks {
     // required parameters
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    [params setValue:playlistName forKey:@"name"];
     
-    // compute params string (because obviously, dictionary doesn't support set of multiple same key)
-    NSMutableString *paramString = [NSMutableString string];
-    for (NSString *trackID in tracks) {
-        [paramString appendFormat:@"&songId=%@", trackID];
+    if ([playlistName length] > 0) {
+        [params setValue:playlistName forKey:@"name"];
     }
     
-    NSURL *url = [NSURL URLWithString:server.url command:@"rest/createPlaylist.view" parameters:params andParameterString:paramString];
+    if ([tracks count] > 0) {
+        [params setValue:tracks forKey:@"songId"];
+    }
+    
+    NSURL *url = [NSURL URLWithString:server.url command:@"rest/createPlaylist.view" parameters:params];
     //NSLog(@"url : %@", url);
     [self requestWithURL:url requestType:SBSubsonicRequestCreatePlaylist];
 }
@@ -334,15 +335,17 @@
 
 - (void)updatePlaylistWithID:(NSString *)playlistID tracks:(NSArray *)tracks {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    [params setValue:playlistID forKey:@"playlistId"];
     
-    // compute params string (because obviously, dictionary doesn't support set of multiple same key)
-    NSMutableString *paramString = [NSMutableString string];
-    for (NSString *trackID in tracks) {
-        [paramString appendFormat:@"&songId=%@", trackID];
+    if ([playlistID length] > 0) {
+        [params setValue:playlistID forKey:@"playlistId"];
     }
     
-    NSURL *url = [NSURL URLWithString:server.url command:@"rest/createPlaylist.view" parameters:params andParameterString:paramString];
+    if ([tracks count] > 0) {
+        [params setValue:tracks forKey:@"songId"];
+    }
+    
+    NSURL *url = [NSURL URLWithString:server.url command:@"rest/createPlaylist.view" parameters:params];
+    
     [self requestWithURL:url requestType:SBSubsonicRequestCreatePlaylist];
 }
 
@@ -416,7 +419,5 @@
     NSURL *url = [NSURL URLWithString:server.url command:@"rest/scrobble.view" parameters:params];
     [self requestWithURL:url requestType:SBSubsonicRequestScrobble];
 }
-
-
 
 @end

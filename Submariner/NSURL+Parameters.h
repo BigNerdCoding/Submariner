@@ -36,8 +36,8 @@
 
 
 @interface NSURL (Parameters)
-+ (id)URLWithString:(NSString *)string command:(NSString *)command parameters:(NSDictionary *)parameters;
-+ (id)URLWithString:(NSString *)string command:(NSString *)command parameters:(NSDictionary *)parameters andParameterString:(NSString *)params;
+
++ (instancetype)URLWithString:(NSString *)string command:(NSString *)command parameters:(NSDictionary *)parameters;
 
 + (NSURL *)temporaryFileURL;
 

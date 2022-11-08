@@ -34,13 +34,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (Hex) {
-    
-}
+@interface NSString (Hex)
 
-- (NSString *) md5;
-+ (NSString *) stringFromBytes:(NSMutableData *)data;
-+ (NSString *) stringFromHex:(NSString *)str;
-+ (NSString *) stringToHex:(NSString *)str;
+- (NSString *)md5String;
++ (NSString *)stringFromBytes:(NSData *)data;
++ (NSString *)stringFromHex:(NSString *)str;
++ (NSString *)stringToHex:(NSString *)str;
 
 @end

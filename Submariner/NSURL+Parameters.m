@@ -33,10 +33,9 @@
 //  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSURL+Parameters.h"
-
+#import "NSString+URL.h"
 
 @implementation NSURL (Parameters)
-
 
 + (NSURL *)temporaryFileURL {
     NSURL *tempDir = [[NSFileManager defaultManager] temporaryDirectory];
@@ -45,107 +44,20 @@
 }
 
 + (id)URLWithString:(NSString *)string command:(NSString *)command parameters:(NSDictionary *)parameters {
-
-    NSMutableString *params = nil;
-    NSURL *url = nil;
+    string = [[NSURL URLWithString:command relativeToURL:[NSURL URLWithString:string]] absoluteString];;
+    NSURL *url = [NSURL URLWithString:[string stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]]];
     
-    string = [string stringByAppendingPathComponent:command];
-    url = [NSURL URLWithString:string];
-    
-    if (parameters != nil)
-    {
-        params = [[NSMutableString alloc] init];
-        for (id key in parameters)
-        {
-            NSString *encodedKey = [key stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]];
-            CFStringRef value = (CFStringRef)CFBridgingRetain([[parameters objectForKey:key] copy]);
-            // Escape even the "reserved" characters for URLs 
-            // as defined in http://www.ietf.org/rfc/rfc2396.txt
-            CFStringRef encodedValue = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, 
-                                                                               value,
-                                                                               NULL, 
-                                                                               (CFStringRef)@";?:/@&=+$,", 
-                                                                               kCFStringEncodingUTF8);
-            [params appendFormat:@"%@=%@&", encodedKey, value];
-            CFRelease(value);
-            CFRelease(encodedValue);
+    if (parameters != nil) {
+        NSString *queryString = [NSString queryStringFromParameters:parameters];
+        
+        if ([queryString length] > 0) {
+            url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:url.query ? @"&%@" : @"?%@", queryString]];
         }
-        [params deleteCharactersInRange:NSMakeRange([params length] - 1, 1)];
     }
-    
-    if (parameters != nil)
-    {
-        NSString *urlWithParams = [[url absoluteString] stringByAppendingFormat:@"?%@", params];
-        url = [NSURL URLWithString:[urlWithParams stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]]];
-    }
-    
-    if(self != nil) {
-        // check strange missing slash 
-        if([[url absoluteString] rangeOfString:@"://"].location == NSNotFound)
-            url = [NSURL URLWithString:[[url absoluteString] stringByReplacingOccurrencesOfString:@":/" withString:@"://"]];
-    }
-    
-    if(params) {
-        params = nil;
-    }
-    
         
     return url;
 }
 
-
-+ (id)URLWithString:(NSString *)string command:(NSString *)command parameters:(NSDictionary *)parameters andParameterString:(NSString *)paramString {
-
-    NSMutableString *params = nil;
-    NSURL *url = nil;
-    
-    // append command
-    string = [string stringByAppendingPathComponent:command];
-    
-    // append parameters dictionary
-    if (parameters != nil)
-    {
-        params = [[NSMutableString alloc] init];
-        for (id key in parameters)
-        {
-            NSString *encodedKey = [key stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]];
-            CFStringRef value = (CFStringRef)CFBridgingRetain([[parameters objectForKey:key] copy]);
-            // Escape even the "reserved" characters for URLs 
-            // as defined in http://www.ietf.org/rfc/rfc2396.txt
-            CFStringRef encodedValue = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, 
-                                                                               value,
-                                                                               NULL, 
-                                                                               (CFStringRef)@";?:/@&=+$,", 
-                                                                               kCFStringEncodingUTF8);
-            [params appendFormat:@"%@=%@&", encodedKey, value];
-            CFRelease(value);
-            CFRelease(encodedValue);
-        }
-        [params deleteCharactersInRange:NSMakeRange([params length] - 1, 1)];
-    }
-    if (parameters != nil)  {
-        string = [string stringByAppendingFormat:@"?%@", params];
-        
-        // append more string based parameters
-        string = [string stringByAppendingString:paramString];
-    }
-
-    // check strange missing slash 
-    if([[url absoluteString] rangeOfString:@"://"].location == NSNotFound)
-        url = [NSURL URLWithString:[[url absoluteString] stringByReplacingOccurrencesOfString:@":/" withString:@"://"]];
-    
-    // clean
-    if(params) {
-        params = nil;
-    }
-    
-    
-    return [NSURL URLWithString:[string stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]]];
-}
-
-// XXX: Move to another file?
-
-// We only care about HTTP.
 - (NSNumber *)keychainProtocol {
     if ([self.scheme isEqualToString: @"https"]) {
         return [NSNumber numberWithUnsignedInt: kSecProtocolTypeHTTPS];
@@ -159,6 +71,5 @@
     }
     return [NSNumber numberWithInteger: [self.scheme isEqualToString: @"https"] ? 443 : 80];
 }
-
 
 @end

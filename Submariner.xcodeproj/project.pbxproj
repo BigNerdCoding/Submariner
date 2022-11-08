@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FEAEDE8291A261900047390 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAEDE7291A261900047390 /* NSString+URL.m */; };
 		3E079FB928568EE8000A73E7 /* SBVolumeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E079FB828568EE8000A73E7 /* SBVolumeButton.m */; };
 		3E189E4028EF5BAB0062ACA0 /* SBAudioMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E189E3F28EF5BAB0062ACA0 /* SBAudioMetadata.swift */; };
 		3E2F86CB28DD36E600C5CE23 /* SBMonospaceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F86CA28DD36E600C5CE23 /* SBMonospaceTextField.swift */; };
@@ -154,6 +155,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1FEAEDE6291A261900047390 /* NSString+URL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
+		1FEAEDE7291A261900047390 /* NSString+URL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		3E079FB728568EE8000A73E7 /* SBVolumeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBVolumeButton.h; sourceTree = "<group>"; };
 		3E079FB828568EE8000A73E7 /* SBVolumeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBVolumeButton.m; sourceTree = "<group>"; };
 		3E189E3228EBBAC40062ACA0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -649,6 +652,8 @@
 				3E2F86D028E3EA9A00C5CE23 /* NSString+File.m */,
 				3E2F86D228E6328400C5CE23 /* NSData+Type.h */,
 				3E2F86D328E6328400C5CE23 /* NSData+Type.m */,
+				1FEAEDE6291A261900047390 /* NSString+URL.h */,
+				1FEAEDE7291A261900047390 /* NSString+URL.m */,
 				3E2F86D728E8F5BD00C5CE23 /* NSTreeController+IndexPath.swift */,
 			);
 			name = Additions;
@@ -1030,6 +1035,7 @@
 				4CFCE4471402582400D35770 /* SBMusicSearchController.m in Sources */,
 				4CC6B56814041F7E003AEAC0 /* SBServerPodcastController.m in Sources */,
 				4C56867B140435F200BE3478 /* _SBEpisode.m in Sources */,
+				1FEAEDE8291A261900047390 /* NSString+URL.m in Sources */,
 				3E2F86D428E6328400C5CE23 /* NSData+Type.m in Sources */,
 				4C56867C140435F200BE3478 /* _SBPodcast.m in Sources */,
 				4C56867D140435F200BE3478 /* SBEpisode.m in Sources */,

@@ -361,7 +361,7 @@
         NSString *salt = [NSString stringFromBytes: salt_bytes];
         [parameters setValue: salt forKey:@"s"];
         NSString *password = self.password;
-        NSString *token = [[NSString stringWithFormat: @"%@%@", password, salt] md5];
+        NSString *token = [[NSString stringWithFormat: @"%@%@", password, salt] md5String];
         [parameters setValue: token forKey:@"t"];
     }
     [parameters setValue:[[NSUserDefaults standardUserDefaults] stringForKey:@"apiVersion"] forKey:@"v"];

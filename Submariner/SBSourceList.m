@@ -298,8 +298,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 - (NSRect)frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row
 {
 	id item = [self itemAtRow:row];
-	
-	NSCell *cell = [self preparedCellAtColumn:column row:row];
+    NSCell *cell = (NSCell *) [self preparedCellAtColumn:column row:row];
 	NSSize cellSize = [cell cellSize];
 	if (!([cell type] == NSImageCellType) && !([cell type] == NSTextCellType))
 		cellSize = [cell cellSizeForBounds:[super frameOfCellAtColumn:column row:row]];
