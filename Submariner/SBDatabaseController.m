@@ -1215,7 +1215,7 @@
     if (!([resource isKindOfClass: [SBResource class]] || [resource isKindOfClass: [SBMusicItem class]])) {
         return;
     }
-    NSString *urlString = resource.objectID.URIRepresentation.absoluteString;
+    NSString *urlString = [resource objectID].URIRepresentation.absoluteString;
     [[NSUserDefaults standardUserDefaults] setObject: urlString forKey: @"LastViewedResource"];
     // swith view relative to a selected resource
     SBNavigationItem *navItem = nil;

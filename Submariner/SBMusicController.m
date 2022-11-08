@@ -160,7 +160,7 @@
     } else if (object == albumsController && [keyPath isEqualToString:@"selectedObjects"]) {
         SBAlbum *album = albumsController.selectedObjects.firstObject;
         if (album != nil) {
-            NSString *urlString = album.objectID.URIRepresentation.absoluteString;
+            NSString *urlString = [album objectID].URIRepresentation.absoluteString;
             [[NSUserDefaults standardUserDefaults] setObject: urlString forKey: @"LastViewedResource"];
         }
     }
