@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SBMusicController">
             <connections>
-                <outlet property="albumsBrowserView" destination="27" id="91"/>
+                <outlet property="albumCollectionView" destination="38s-au-03c" id="nSa-wL-fKy"/>
                 <outlet property="albumsController" destination="64" id="90"/>
                 <outlet property="artistSplitView" destination="3" id="94"/>
                 <outlet property="artistsController" destination="61" id="74"/>
                 <outlet property="artistsTableView" destination="18" id="75"/>
+                <outlet property="flowLayout" destination="gWq-xK-6nN" id="cyL-an-K3M"/>
                 <outlet property="mergeArtistsController" destination="95" id="115"/>
                 <outlet property="rightSplitView" destination="24" id="EvK-wC-BQn"/>
                 <outlet property="tracksController" destination="68" id="87"/>
@@ -49,7 +49,6 @@
                                             </searchFieldCell>
                                             <connections>
                                                 <action selector="filterArtist:" target="-2" id="92"/>
-                                                <outlet property="nextKeyView" destination="27" id="118"/>
                                             </connections>
                                         </searchField>
                                     </subviews>
@@ -121,39 +120,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="444" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="120.75" horizontalPageScroll="10" verticalLineScroll="140" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28">
-                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="157"/>
+                                                <scrollView wantsLayer="YES" focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="121" horizontalPageScroll="10" verticalLineScroll="140" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BV-fB-9gQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="444" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <clipView key="contentView" copiesOnScroll="NO" id="T16-YV-nfh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="445" height="157"/>
+                                                    <clipView key="contentView" copiesOnScroll="NO" id="b0p-Nr-9L8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="444" height="160"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.82416337728500366" allowsMultipleSelection="NO" id="27" customClass="SBImageBrowserView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="445" height="2533"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES" subtitled="YES"/>
-                                                                <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                                                <size key="cellSize" width="302" height="302"/>
+                                                            <collectionView selectable="YES" allowsMultipleSelection="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38s-au-03c">
+                                                                <rect key="frame" x="0.0" y="0.0" width="444" height="160"/>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="20" minimumLineSpacing="20" id="gWq-xK-6nN">
+                                                                    <size key="itemSize" width="300" height="300"/>
+                                                                    <edgeInsets key="sectionInset" left="20" right="20" top="10" bottom="10"/>
+                                                                </collectionViewFlowLayout>
+                                                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <connections>
-                                                                    <binding destination="64" name="content" keyPath="arrangedObjects" id="67"/>
-                                                                    <binding destination="64" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="67" id="71"/>
-                                                                    <outlet property="delegate" destination="-2" id="83"/>
-                                                                    <outlet property="menu" destination="zg5-lV-UJz" id="XYP-Mt-3oH"/>
+                                                                    <outlet property="dataSource" destination="-2" id="nkt-EB-Nqx"/>
+                                                                    <outlet property="delegate" destination="-2" id="bju-C8-GMz"/>
+                                                                    <outlet property="menu" destination="zg5-lV-UJz" id="76w-xX-OjV"/>
                                                                 </connections>
-                                                            </ikImageBrowserView>
+                                                            </collectionView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="38s-au-03c" secondAttribute="bottom" id="E8h-oz-ABY"/>
+                                                            <constraint firstAttribute="trailing" secondItem="38s-au-03c" secondAttribute="trailing" id="WEq-pM-85E"/>
+                                                            <constraint firstItem="38s-au-03c" firstAttribute="leading" secondItem="b0p-Nr-9L8" secondAttribute="leading" id="ikN-Cs-C9I"/>
+                                                            <constraint firstItem="38s-au-03c" firstAttribute="top" secondItem="b0p-Nr-9L8" secondAttribute="top" id="x6g-M3-uje"/>
+                                                        </constraints>
                                                     </clipView>
-                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="30">
-                                                        <rect key="frame" x="-100" y="-100" width="127" height="15"/>
+                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="hqf-7f-Qcf">
+                                                        <rect key="frame" x="-100" y="-100" width="360" height="16"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
-                                                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="29">
-                                                        <rect key="frame" x="429" y="0.0" width="16" height="157"/>
+                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iUa-7U-kyo">
+                                                        <rect key="frame" x="234" y="1" width="15" height="143"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
-                                                    <connections>
-                                                        <outlet property="nextKeyView" destination="38" id="119"/>
-                                                    </connections>
                                                 </scrollView>
                                             </subviews>
                                         </customView>
@@ -333,7 +335,7 @@
                     </holdingPriorities>
                 </splitView>
             </subviews>
-            <point key="canvasLocation" x="139" y="135"/>
+            <point key="canvasLocation" x="138.5" y="135"/>
         </customView>
         <arrayController mode="entity" entityName="Artist" fetchPredicateFormat="server == nil" automaticallyPreparesContent="YES" id="61" userLabel="Artists Controller">
             <connections>
@@ -365,7 +367,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="404" height="120"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <view key="contentView" id="97">
                 <rect key="frame" x="0.0" y="0.0" width="404" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>

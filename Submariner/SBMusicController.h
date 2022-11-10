@@ -44,11 +44,10 @@
 @class SBPrioritySplitViewDelegate;
 @class SBMergeArtistsController;
 
-@interface SBMusicController : SBViewController <NSTableViewDelegate>  {
+@interface SBMusicController : SBViewController <NSTableViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegate>  {
 @private
     IBOutlet SBMergeArtistsController *mergeArtistsController;
     IBOutlet NSTableView        *artistsTableView;
-    IBOutlet IKImageBrowserView *albumsBrowserView;
     IBOutlet NSTableView        *tracksTableView;
     IBOutlet NSArrayController  *artistsController;
     IBOutlet NSArrayController  *albumsController;
@@ -70,6 +69,8 @@
 @property (readwrite, strong) NSArray *artistSortDescriptor;
 @property (readwrite, strong) NSArray *trackSortDescriptor;
 
+@property (weak) IBOutlet NSCollectionView *albumCollectionView;
+@property (weak) IBOutlet NSCollectionViewFlowLayout *flowLayout;
 
 - (SBMusicItem*) selectedItem;
 

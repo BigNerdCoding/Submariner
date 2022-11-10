@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8786AA291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8786A8291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.m */; };
+		1F8786AB291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8786A9291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.xib */; };
 		1FEAEDE8291A261900047390 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAEDE7291A261900047390 /* NSString+URL.m */; };
 		3E079FB928568EE8000A73E7 /* SBVolumeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E079FB828568EE8000A73E7 /* SBVolumeButton.m */; };
 		3E189E4028EF5BAB0062ACA0 /* SBAudioMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E189E3F28EF5BAB0062ACA0 /* SBAudioMetadata.swift */; };
@@ -155,6 +157,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F8786A7291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAlbumsCollectionViewItem.h; sourceTree = "<group>"; };
+		1F8786A8291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAlbumsCollectionViewItem.m; sourceTree = "<group>"; };
+		1F8786A9291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SBAlbumsCollectionViewItem.xib; sourceTree = "<group>"; };
 		1FEAEDE6291A261900047390 /* NSString+URL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
 		1FEAEDE7291A261900047390 /* NSString+URL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		3E079FB728568EE8000A73E7 /* SBVolumeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBVolumeButton.h; sourceTree = "<group>"; };
@@ -571,6 +576,9 @@
 				3EFA2C8328D11B9900A1CE46 /* SBTrackArtistNameTransformer.m */,
 				3E2F86CA28DD36E600C5CE23 /* SBMonospaceTextField.swift */,
 				3E94E5F92915AB130080FDF6 /* SBRoutePickerView.swift */,
+				1F8786A7291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.h */,
+				1F8786A8291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.m */,
+				1F8786A9291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -923,6 +931,7 @@
 				4CFB3EF3139D4693008DC01A /* Tracklist.xib in Resources */,
 				4C7AA22E139D563A0050BE95 /* Playlist.xib in Resources */,
 				4C7AA233139D57A00050BE95 /* Music.xib in Resources */,
+				1F8786AB291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.xib in Resources */,
 				4C7AA24E139D64930050BE95 /* ServerLibrary.xib in Resources */,
 				4CFAFC2D139EF08800E82B57 /* ServerHome.xib in Resources */,
 				4C1A69BC13A6AEE10054A3EF /* ServerUsers.xib in Resources */,
@@ -991,6 +1000,7 @@
 				4CFB3E19139D052F008DC01A /* SBEditServerController.m in Sources */,
 				4CFB3EA3139D115F008DC01A /* SBOperation.m in Sources */,
 				4CFB3EAE139D11CE008DC01A /* SBImportOperation.m in Sources */,
+				1F8786AA291D2BE10025FCF0 /* SBAlbumsCollectionViewItem.m in Sources */,
 				4CFB3EF2139D4693008DC01A /* SBTracklistController.m in Sources */,
 				4CFB3EF8139D47EA008DC01A /* SBViewController.m in Sources */,
 				4C7AA221139D530B0050BE95 /* RWTableHeaderCell.m in Sources */,
@@ -1185,6 +1195,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Submariner/Submariner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -1228,6 +1239,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Submariner/Submariner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
